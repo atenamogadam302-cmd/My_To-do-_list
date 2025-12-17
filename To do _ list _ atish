@@ -1,0 +1,51 @@
+# todo_list.py - برنامه ساده لیست کارهای روزانه
+
+def show_tasks(tasks):
+    if not tasks:
+        print("لیست کارها خالیه!")
+    else:
+        print("\nکارهای شما:")
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task}")
+
+def add_task(tasks):
+    task = input("کار جدید رو وارد کن: ")
+    tasks.append(task)
+    print("کار اضافه شد!")
+
+def remove_task(tasks):
+    show_tasks(tasks)
+    try:
+        num = int(input("شماره کاری که می‌خوای حذف کنی رو وارد کن: "))
+        if 1 <= num <= len(tasks):
+            removed = tasks.pop(num - 1)
+            print(f"کار '{removed}' حذف شد!")
+        else:
+            print("شماره اشتباهه!")
+    except ValueError:
+        print("لطفاً عدد وارد کن!")
+
+tasks = []
+
+print("به برنامه لیست کارهای روزانه خوش اومدی! 😊")
+
+while True:
+    print("\nانتخاب کن:")
+    print("1. نمایش کارها")
+    print("2. اضافه کردن کار")
+    print("3. حذف کار")
+    print("4. خروج")
+    
+    choice = input("شماره رو وارد کن: ")
+    
+    if choice == "1":
+        show_tasks(tasks)
+    elif choice == "2":
+        add_task(tasks)
+    elif choice == "3":
+        remove_task(tasks)
+    elif choice == "4":
+        print("خداحافظ! 👋")
+        break
+    else:
+        print("انتخاب اشتباه!")
